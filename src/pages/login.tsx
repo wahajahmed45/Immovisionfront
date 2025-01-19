@@ -131,7 +131,7 @@ export default function Login() {
                 {error && <div className="text-red-500 mt-4">{error}</div>}
 
 
-                <a href="#" className="uppercase mt-6 text-13px lg:text-sm">
+                <a href="/forgot" className="uppercase mt-6 text-13px lg:text-sm">
                   <span className="leading-1.8 lg:leading-1.8">FORGOTTEN YOUR PASSWORD?</span>
                 </a>
               </form>

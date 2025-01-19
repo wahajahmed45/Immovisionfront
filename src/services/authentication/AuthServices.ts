@@ -167,6 +167,34 @@ class AuthService {
       throw new Error('Failed to fetch user data');
     }
   }
+
+  static async forgotPassword(email: string): Promise<boolean> {
+    try {
+        const response = await axios.post(
+            `${config.apiBaseUrl}/api/users/forgot-password`,
+            null,
+            {
+                params: { email },
+                headers: { 'Content-Type': 'application/json' }
+            }
+        );
+
+        if (response.status === 200) {
+            return true;
+        }
+        return false;
+    } catch (error) {
+        console.error('Password reset failed:', error);
+
+        if (axios.isAxiosError(error) && error.response) {
+            const errorData = error.response.data as { message: string };
+            throw new Error(errorData.message || 'Password reset failed');
+        }
+
+        throw new Error('An unexpected error occurred');
+    }
+  }
+
 }
 
 export default AuthService;
