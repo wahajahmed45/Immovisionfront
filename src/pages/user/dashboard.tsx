@@ -156,7 +156,7 @@ console.log("userRole: " + userRole);
                     <i className="fa-solid fa-list text-sm"></i>
                   </button>
                 </li>
-                {userRole?.toLowerCase() === 'agent' && (
+                {userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent' && (
                   <li className={`border-b border-border-color-1 ${activeTab === 'pending-approvals' ? 'active bg-secondary-color text-white' : ''}`}>
                     <button
                       onClick={() => handleTabChange('pending-approvals')}
@@ -194,7 +194,7 @@ console.log("userRole: " + userRole);
                     <i className="fas fa-calendar text-sm"></i>
                   </button>
                 </li>
-                {userRole?.toLowerCase() === 'user' && (
+                {userRole?.toLowerCase() === 'user' || userRole?.toLowerCase() === 'role_user' && (
                     <li className={`border-b border-border-color-1 ${activeTab === 'pending-appointments' ? 'active bg-secondary-color text-white' : ''}`}>
                         <button
                             onClick={() => handleTabChange('pending-appointments')}

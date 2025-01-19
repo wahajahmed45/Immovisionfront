@@ -228,7 +228,7 @@ export default function EditProperty() {
            * Si l'utilisateur est un utilisateur, vérifie si l'utilisateur est le propriétaire de la propriété
            * Si non, redirige vers la page d'accueil
            */
-          if (userRole?.toLowerCase() === 'user') {
+          if (userRole?.toLowerCase() === 'user' || userRole?.toLowerCase() === 'role_user') {
             if (propertyData?.ownerEmail !== userEmail) {
               router.push('/');
               return;
@@ -246,8 +246,8 @@ export default function EditProperty() {
            * Si l'utilisateur est un agent, vérifie si l'agent est le propriétaire de la propriété
            * Si non, redirige vers la page d'accueil
            */
-           if(userRole?.toLowerCase() === 'agent'){
-            if(propertyData?.agentName !== userEmail){
+           if(userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent'){
+            if(propertyData?.agentEmail !== userEmail){
               router.push('/');
               return;
             }

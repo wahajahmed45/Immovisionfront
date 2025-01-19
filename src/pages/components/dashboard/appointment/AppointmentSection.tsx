@@ -32,7 +32,7 @@ export default function AppointmentSection() {
         const fetchAppointments = async () => {
             setLoading(true);
             try {
-                const data = userRole?.toLowerCase() === 'agent'
+                const data = userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent'
                     ? await getAgentAppointments(userEmail ?? '')
                     : await getClientAppointments(userEmail ?? '');
                 setAppointments(data);
@@ -51,7 +51,7 @@ export default function AppointmentSection() {
      */
     useEffect(() => {
         const fetchProperties = async () => {
-            if (userRole?.toLowerCase() === 'agent') {
+            if (userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent') {
                 const data = await getAgentProperties(userEmail ?? '');
                 setProperties(data);
             }
@@ -110,7 +110,7 @@ export default function AppointmentSection() {
         try {
             await updateAppointmentStatus(id, status, comment);
             // Rafraîchir la liste
-            const data = userRole?.toLowerCase() === 'agent'
+            const data = userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent'
                 ? await getAgentAppointments(userEmail ?? '')
                 : await getClientAppointments(userEmail ?? '');
             setAppointments(data);
@@ -160,7 +160,7 @@ export default function AppointmentSection() {
         <div className="p-6">
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-semibold text-gray-800">My Appointments</h2>
-                {userRole?.toLowerCase() === 'agent' && (
+                {userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent' && (
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center gap-2"

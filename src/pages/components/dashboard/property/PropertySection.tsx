@@ -25,7 +25,7 @@ export default function PropertySection() {
         const fetchUserProperties = async () => {
             if (userEmail) {
                 try {
-                    if(userRole?.toLowerCase() === 'agent'){
+                    if(userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent'){
                         const properties = await getAgentProperties(userEmail);
                         setUserProperties(properties);
                     } else {
@@ -50,7 +50,7 @@ export default function PropertySection() {
         if (window.confirm('Are you sure you want to delete this property?')) {
             try {
                 await deleteProperty(propertyId);
-                if(userRole?.toLowerCase() === 'agent'){
+                if(userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent'){
                     const properties = await getAgentProperties(userEmail ?? "");
                     setUserProperties(properties);
                 } else {
@@ -127,7 +127,7 @@ export default function PropertySection() {
                                         >
                                             View
                                         </button>
-                                        {(userRole?.toLowerCase() === 'agent' || property.approvalStatus === 'PENDING' || property.approvalStatus === 'REJECTED') && (
+                                        {(userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent' || property.approvalStatus === 'PENDING' || property.approvalStatus === 'REJECTED') && (
                                             <>
                                                 <button
                                                     onClick={() => router.push(`/properties/edit/${property.id}`)}
