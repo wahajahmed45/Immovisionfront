@@ -16,14 +16,14 @@ interface SwiperComponentProps {
 const SwiperComponent: React.FC<SwiperComponentProps> = ({ property }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   
-  // Ensure images is always an array
-  const images = property?.imageUrl ?? [];
+  // Ensure images is always an array, with a fallback empty array
+  const images = property?.imageUrl || [];
   
-  // If no property or no images, return null or a placeholder
-  if (!property || images.length === 0) {
+  // If no images, return null or a placeholder
+  if (images.length === 0) {
     return (
       <div className="relative w-full px-4 py-8 min-h-[500px] flex items-center justify-center">
-        No images available
+        <p>No images available</p>
       </div>
     );
   }

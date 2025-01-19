@@ -226,7 +226,7 @@ export default function PropertyDetails() {
   );
 
   // Formatage de la date
-  const createdAt = property.updatedAt ? property.updatedAt.split('-') : [];
+  const createdAt = property.updatedAt ? property.updatedAt : [];
   const dateString = `${createdAt[0]}${String(createdAt[1]).padStart(2, '0')}${String(createdAt[2]).padStart(2, '0')}`;
   const formattedDate = `${dateString.substring(6, 8)}/${dateString.substring(4, 6)}/${dateString.substring(0, 4)}`;
 
@@ -281,17 +281,17 @@ export default function PropertyDetails() {
                     </div>
                     {/* Statut */}
                     <div className={`
-                      ${property.status === 'sold' ? 'bg-red-500' : 
-                        property.status === 'for_rent' ? 'bg-orange-500' : 
+                      ${property.status === 'solded' ? 'bg-red-500' : 
+                        property.status === 'rent' ? 'bg-orange-500' : 
                         'bg-green-500'
                       } hover:bg-primary-color transition-all duration-300 rounded-lg shadow-md p-4 flex items-center justify-center`}
                     >
                       <div className="text-center">
                         <span className="block text-sm text-white/90 mb-1">Status</span>
                         <span className="text-xl md:text-2xl font-bold text-white">
-                          {property.status === 'for_rent' ? 'For Rent' :
-                           property.status === 'for_sale' ? 'For Sale' :
-                           property.status === 'sold' ? 'Sold' : 'N/A'}
+                          {property.status === 'rent' ? 'For Rent' :
+                           property.status === 'sale' ? 'For Sale' :
+                           property.status === 'solded' ? 'Solded' : 'N/A'}
                         </span>
                       </div>
                     </div>
@@ -649,13 +649,14 @@ export default function PropertyDetails() {
                       propertyId={id as string}
                       agentEmail={agentEmail}
                       userEmail={userEmail}
+                      propertyStatus={property.status}
                       onReviewAdded={updateRatings}
                     />
                   )}
                 </div>
               </div>
               {/* <!-- sidebar --> */}
-              {userRole.toLowerCase() === 'agent' && property.approvationStatus === 'PENDING' ? (
+              {userRole === 'ROLE_agent' && property.approvationStatus === 'PENDING' ? (
                 <div className="lg:col-start-9 lg:col-span-4 pt-60px lg:pt-0">
                   <div className="px-5 pt-35px pb-10 xl:pl-35px xl:pr-30px mb-10 border-2 border-border-color-11">
                     <h4 className="text-lg font-semibold text-heading-color mb-25px">
@@ -746,7 +747,7 @@ export default function PropertyDetails() {
                     rating={agentRating}
                     reviewCount={agentReviewCount}
                   />
-                  
+                  {property.status !== 'solded' && (
                   <div className="px-5 pt-35px pb-10 xl:pl-35px xl:pr-30px mb-10 border-2 border-border-color-11">
                     <h4 className="text-lg font-semibold text-heading-color mb-25px">
                       <span className="leading-1.3 pl-10px border-l-2 border-secondary-color">
@@ -758,6 +759,7 @@ export default function PropertyDetails() {
                     propertyId={id as string}
                     />
                   </div>
+                  )}
                 </div>
               )}
             </div>

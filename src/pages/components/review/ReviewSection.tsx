@@ -8,10 +8,11 @@ interface ReviewSectionProps {
   propertyId: string;
   agentEmail: string;
   userEmail: string;
+  propertyStatus: string;
   onReviewAdded: () => void;
 }
 
-export const ReviewSection = ({ propertyId, agentEmail, userEmail, onReviewAdded }: ReviewSectionProps) => {
+export const ReviewSection = ({ propertyId, agentEmail, userEmail, propertyStatus, onReviewAdded }: ReviewSectionProps) => {
   const [reviews, setReviews] = useState<ReviewDTO[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +54,7 @@ export const ReviewSection = ({ propertyId, agentEmail, userEmail, onReviewAdded
         <ReviewList reviews={reviews} />
       )}
 
-      {userEmail ? (
+      {userEmail && propertyStatus !== 'solded' ? (
         <AddReview 
           propertyId={propertyId}
           agentEmail={agentEmail}
@@ -63,12 +64,20 @@ export const ReviewSection = ({ propertyId, agentEmail, userEmail, onReviewAdded
       ) : (
         <div className="mt-6 p-4 bg-gray-50 rounded-lg text-center">
           <p className="text-gray-600">
-            <i className="fas fa-lock mr-2"></i>
-            Please log in to write a review
+            {!userEmail ? (
+              <>
+                <i className="fas fa-lock mr-2"></i>
+                Please log in to write a review
+              </>
+            ) : propertyStatus === 'solded' ? (
+              <>
+                <i className="fas fa-check-circle mr-2"></i>
+                This property has been sold. Reviews are no longer accepted.
+              </>
+            ) : null}
           </p>
         </div>
       )}
     </div>
   );
 }; 
-export default ReviewSection;
