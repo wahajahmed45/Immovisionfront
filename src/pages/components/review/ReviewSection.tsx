@@ -81,3 +81,4 @@ export const ReviewSection = ({ propertyId, agentEmail, userEmail, propertyStatu
     </div>
   );
 }; 
+export default ReviewSection; 
