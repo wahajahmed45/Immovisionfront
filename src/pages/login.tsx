@@ -71,14 +71,6 @@ export default function Login() {
               <h1 className="text-2xl sm:text-3xl md:text-26px lg:text-3xl xl:text-4xl font-bold text-heading-color mb-15px">
                 <span className="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">Account</span>
               </h1>
-              <ul className="breadcrumb flex gap-30px items-center text-sm lg:text-base font-bold pt-4">
-                <li className="home relative leading-1.8 lg:leading-1.8">
-                  <a href="index.html">
-                    <i className="fas fa-home text-secondary-color"></i> Home
-                  </a>
-                </li>
-                <li className="leading-1.8 lg:leading-1.8 text-heading-color">Login</li>
-              </ul>
             </div>
           </div>
         </section>
@@ -92,13 +84,6 @@ export default function Login() {
                   To Your Account
                 </span>
               </h1>
-              <p className="text-sm lg:text-base">
-                <span className="leading-1.8 lg:leading-1.8">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  <br />
-                  Sit aliquid, Non distinctio vel iste.
-                </span>
-              </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2">

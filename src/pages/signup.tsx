@@ -62,12 +62,6 @@ export default function Signup() {
               <h1 className="text-2xl sm:text-3xl md:text-26px lg:text-3xl xl:text-4xl font-bold text-heading-color mb-15px">
                 <span className="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">Account</span>
               </h1>
-              <ul className="breadcrumb flex gap-30px items-center text-sm lg:text-base font-bold pt-4">
-                <li className="home relative leading-1.8 lg:leading-1.8">
-                  <a href="index.html"><i className="fas fa-home text-secondary-color"></i> Home</a>
-                </li>
-                <li className="leading-1.8 lg:leading-1.8 text-heading-color">Register</li>
-              </ul>
             </div>
           </div>
         </section>
@@ -79,9 +73,6 @@ export default function Signup() {
                 <h1 className="text-2xl sm:text-3xl md:text-26px lg:text-3xl xl:text-44px font-bold text-heading-color mb-15px">
                   <span className="leading-1.3 md:leading-1.3 lg:leading-1.3 xl:leading-1.3">Register <br/>Your Account</span>
                 </h1>
-                <p className="text-sm lg:text-base">
-                  <span className="leading-1.8 lg:leading-1.8">Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br/>Sit aliquid, Non distinctio vel iste.</span>
-                </p>
               </div>
               <form className="form-primary bg-white px-25px md:px-50px pt-10 pb-50px" onSubmit={handleSignup}>
                 <div>
@@ -151,10 +142,10 @@ export default function Signup() {
                   <p className="text-sm lg:text-base mb-5 lg:mb-6">
                     <span className="leading-1.8 lg:leading-1.8">By creating an account, you agree to our:</span>
                   </p>
-                  <a href="#" className="uppercase text-sm lg:text-base block">
+                  <a href="/about/termAndCondition" className="uppercase text-sm lg:text-base block">
                     <span className="leading-1.8 lg:leading-1.8">TERMS OF CONDITIONS &nbsp; &nbsp; | &nbsp; &nbsp; PRIVACY POLICY</span>
                   </a>
-                  <a href="login.html" className="uppercase text-sm lg:text-base mt-50px">
+                  <a href="login" className="uppercase text-sm lg:text-base mt-50px">
                     <span className="leading-1.8 lg:leading-1.8">ALREADY HAVE AN ACCOUNT ?</span>
                   </a>
                 </div>
