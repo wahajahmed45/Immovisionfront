@@ -127,7 +127,7 @@ export default function PropertySection() {
                                         >
                                             View
                                         </button>
-                                        {(userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent' || property.approvalStatus === 'PENDING' || property.approvalStatus === 'REJECTED') && (
+                                        {((userRole?.toLowerCase() === 'agent' || userRole?.toLowerCase() === 'role_agent') || property.approvalStatus === 'PENDING' || property.approvalStatus === 'REJECTED') && (
                                             <>
                                                 <button
                                                     onClick={() => router.push(`/properties/edit/${property.id}`)}
