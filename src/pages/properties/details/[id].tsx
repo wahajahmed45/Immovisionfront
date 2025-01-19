@@ -656,7 +656,7 @@ export default function PropertyDetails() {
                 </div>
               </div>
               {/* <!-- sidebar --> */}
-              {userRole === 'ROLE_agent' && property.approvationStatus === 'PENDING' ? (
+              {userRole.toLocaleLowerCase() === 'agent' && property.approvationStatus === 'PENDING' ? (
                 <div className="lg:col-start-9 lg:col-span-4 pt-60px lg:pt-0">
                   <div className="px-5 pt-35px pb-10 xl:pl-35px xl:pr-30px mb-10 border-2 border-border-color-11">
                     <h4 className="text-lg font-semibold text-heading-color mb-25px">
