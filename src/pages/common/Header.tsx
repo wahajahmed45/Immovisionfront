@@ -6,6 +6,7 @@ import AuthService from '@/services/authentication/AuthServices';
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     AuthService.logout();
@@ -34,8 +35,17 @@ export default function Header() {
             <Link href="/" className="text-lg xl:text-15px 2xl:text-lg text-white hover:text-secondary-color font-semibold whitespace-nowrap pl-10px py-22px">
             <img src="/img/logo-2.png" alt="Logo" className="w-[200px]" /></Link>
           </div>
-          <nav className="flex-grow hidden xl:block">
-            <ul className="flex items-center justify-end gap-15px xl:gap-5">
+
+          {/* Bouton Menu Burger */}
+          <button 
+            className="xl:hidden text-orange-500 p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+          </button>
+
+          <nav className={`${isMenuOpen ? 'block' : 'hidden'} xl:block absolute xl:relative top-full left-0 w-full xl:w-auto bg-white xl:bg-transparent`}>
+            <ul className="flex flex-col xl:flex-row items-start xl:items-center justify-end gap-15px xl:gap-5">
               {/*  */}
               <li className="relative group">
                 <Link href="/" className="text-lg xl:text-15px 2xl:text-lg text-orange-500 hover:text-secondary-color font-semibold whitespace-nowrap pl-10px py-22px">
@@ -106,10 +116,49 @@ export default function Header() {
                 >Contact
                 </a>
               </li>
+
+              {/* Boutons de connexion/déconnexion pour mobile */}
+              <div className="xl:hidden w-full px-4 py-2 space-y-2">
+                {isLoggedIn ? (
+                  <>
+                    <Link
+                      href="/user/dashboard"
+                      className="block w-full text-center px-30px py-14px text-lg bg-secondary-color hover:bg-section-bg-1 font-semibold text-white hover:text-primary-color"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Dashboard
+                    </Link>
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleLogout();
+                        setIsMenuOpen(false);
+                      }}
+                      className="block w-full text-center px-30px py-14px text-lg bg-secondary-color hover:bg-section-bg-1 font-semibold text-white hover:text-primary-color"
+                    >
+                      <img 
+                        src="/img/logout.png"
+                        alt="Logout Icon" 
+                        className="inline-block w-5 h-5 mr-2" 
+                      />
+                      Logout
+                    </a>
+                  </>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="block w-full text-center px-30px py-14px text-lg bg-secondary-color hover:bg-section-bg-1 font-semibold text-white hover:text-primary-color"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                )}
+              </div>
             </ul>
           </nav>
           
-          <div>
+          <div className="hidden xl:block">
             <ul className="flex items-center gap-0px">
 
             {isLoggedIn && (

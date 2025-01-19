@@ -92,7 +92,7 @@ export default function Dashboard() {
   if (!isLoggedIn) {
     return <div>Please log in to access this page</div>;
   }
-
+console.log("userRole: " + userRole);
   return (
   
   <div>
@@ -110,18 +110,6 @@ export default function Dashboard() {
                 >My Account</span
               >
             </h1>
-            <ul
-              className="breadcrumb flex gap-30px items-center text-sm lg:text-base font-bold pt-4"
-            >
-              <li className="home relative leading-1.8 lg:leading-1.8">
-                <a href="index.html"
-                  ><i className="fas fa-home text-secondary-color pr-1.5"></i> Home</a>
-                
-              </li>
-              <li className="leading-1.8 lg:leading-1.8 text-heading-color">
-                My Account
-              </li>
-            </ul>
           </div>
         </div>
       </section>
@@ -298,7 +286,7 @@ export default function Dashboard() {
                         <ul className="space-y-3">
                             <li className="flex items-center gap-2 text-gray-600">
                                 <i className="fas fa-user"></i>
-                                Role: <span className="font-semibold">{userRole?.replace('ROLE_', '')}</span>
+                                Role: <span className="font-semibold">{userRole}</span>
                             </li>
                             <li className="flex items-center gap-2 text-gray-600">
                                 <i className="fas fa-envelope"></i>

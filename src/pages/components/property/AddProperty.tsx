@@ -1768,27 +1768,6 @@ export default function AddProperty() {
           </div>
         </div>
       </section>
-
-      {/* External Scripts */}
-      <Script src="/js/stickyHeader.js" strategy="afterInteractive" />
-      <Script src="/js/accordion.js" strategy="afterInteractive" />
-      <Script src="/js/service.js" strategy="afterInteractive" />
-      <Script src="/js/nice-select2.js" strategy="afterInteractive" />
-      <Script src="/js/search.js" strategy="afterInteractive" />
-      <Script src="/js/drawer.js" strategy="afterInteractive" />
-      <Script src="/js/swiper-bundle.min.js" strategy="afterInteractive" />
-      <Script src="/js/slider.js" strategy="afterInteractive" />
-      <Script src="/js/counterup.js" strategy="afterInteractive" />
-      <Script src="/js/modal.js" strategy="afterInteractive" />
-      <Script src="/js/tabs.js" strategy="afterInteractive" />
-      <Script src="/js/glightbox.min.js" strategy="afterInteractive" />
-      <Script src="/js/scrollUp.js" strategy="afterInteractive" />
-      <Script src="/js/smoothScroll.js" strategy="afterInteractive" />
-      <Script src="/js/isotope.pkgd.min.js" strategy="afterInteractive" />
-      <Script src="/js/filter.js" strategy="afterInteractive" />
-      <Script src="/js/nice_checkbox.js" strategy="afterInteractive" />
-      <Script src="/js/count.js" strategy="afterInteractive" />
-      <Script src="/js/main.js" strategy="afterInteractive" />
     </div>
   );
 }

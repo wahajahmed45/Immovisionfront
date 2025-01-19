@@ -228,7 +228,7 @@ export default function EditProperty() {
            * Si l'utilisateur est un utilisateur, vérifie si l'utilisateur est le propriétaire de la propriété
            * Si non, redirige vers la page d'accueil
            */
-          if (userRole === 'ROLE_user') {
+          if (userRole?.toLowerCase() === 'user') {
             if (propertyData?.ownerEmail !== userEmail) {
               router.push('/');
               return;
@@ -242,6 +242,17 @@ export default function EditProperty() {
               return;
             }
           }
+           /**
+           * Si l'utilisateur est un agent, vérifie si l'agent est le propriétaire de la propriété
+           * Si non, redirige vers la page d'accueil
+           */
+           if(userRole?.toLowerCase() === 'agent'){
+            if(propertyData?.agentName !== userEmail){
+              router.push('/');
+              return;
+            }
+          }
+
           /**
            * Charger les commodités personnalisées
            * Filtre les commodités personnalisées pour ne pas les répéter
@@ -1941,27 +1952,6 @@ export default function EditProperty() {
           </div>
         </div>
       </section>
-
-      {/* External Scripts */}
-      <Script src="/js/stickyHeader.js" strategy="afterInteractive" />
-      <Script src="/js/accordion.js" strategy="afterInteractive" />
-      <Script src="/js/service.js" strategy="afterInteractive" />
-      <Script src="/js/nice-select2.js" strategy="afterInteractive" />
-      <Script src="/js/search.js" strategy="afterInteractive" />
-      <Script src="/js/drawer.js" strategy="afterInteractive" />
-      <Script src="/js/swiper-bundle.min.js" strategy="afterInteractive" />
-      <Script src="/js/slider.js" strategy="afterInteractive" />
-      <Script src="/js/counterup.js" strategy="afterInteractive" />
-      <Script src="/js/modal.js" strategy="afterInteractive" />
-      <Script src="/js/tabs.js" strategy="afterInteractive" />
-      <Script src="/js/glightbox.min.js" strategy="afterInteractive" />
-      <Script src="/js/scrollUp.js" strategy="afterInteractive" />
-      <Script src="/js/smoothScroll.js" strategy="afterInteractive" />
-      <Script src="/js/isotope.pkgd.min.js" strategy="afterInteractive" />
-      <Script src="/js/filter.js" strategy="afterInteractive" />
-      <Script src="/js/nice_checkbox.js" strategy="afterInteractive" />
-      <Script src="/js/count.js" strategy="afterInteractive" />
-      <Script src="/js/main.js" strategy="afterInteractive" />
     </div>
   );
 }
